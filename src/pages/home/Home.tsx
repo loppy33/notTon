@@ -26,7 +26,7 @@ export default function Home() {
         { text: 'Зайди в Cats', url: 't.me/catsgang_bot/join?startapp=9q84cg87TUd9F8FgDPJxY' },
         { text: 'Зайди в OXK Racer', url: 'https://t.me/OKX_official_bot/OKX_Racer?startapp=linkCode_89541109' },
         { text: 'Зайди в Blum', url: 'https://t.me/blum/app?startapp=ref_kZlacW6I6R' },
-        { text: 'Пригласи одного друга 0/1', url: telegramForwardButton('') },
+        { text: 'Пригласи одного друга 0/1', url: telegramForwardButton('t.me/notTon10_bot/getTon?ref=f483d158esa28gdf85') },
     ];
 
     return (
@@ -56,19 +56,31 @@ export default function Home() {
                     </div>
                     <div className="main__tasks">
                         <h2 className='section__name'>Tasks</h2>
-                        {tasks.slice(1, more ? tasks.length : 3).map((task, index) => (
-                            <div className="task" key={index + 1}>
-                                <div className="task__info">
-                                    <p>{task.text}</p>
-                                    <span>
-                                        <button className='check'>
-                                            {completedTasks[index + 1] ? <FaCheck /> : 'Check'}
-                                        </button>
-                                    </span>
+                        {tasks.slice(1, more ? tasks.length : 3).map((task, index) => {
+                            // Проверяем, если это задание "Пригласи одного друга"
+                            const isInviteTask = index + 1 === 6;
+                            return (
+                                <div className="task" key={index + 1}>
+                                    <div className="task__info">
+                                        <p>{task.text}</p>
+                                        <span>
+                                            {!isInviteTask ? (
+                                                <button className='check'>
+                                                    {completedTasks[index + 1] ? <FaCheck /> : 'Check'}
+                                                </button>
+                                            ) : (
+                                                <button className='check'>
+                                                    Check
+                                                </button>
+                                            )}
+                                        </span>
+                                    </div>
+                                    <a className='join' href={task.url} onClick={() => handleJoinClick(index + 1)}>
+                                        {isInviteTask ? 'Invite' : 'Join'}
+                                    </a>
                                 </div>
-                                <a className='join' href={task.url} onClick={() => handleJoinClick(index + 1)}>Join</a>
-                            </div>
-                        ))}
+                            );
+                        })}
 
                         {
                             more ? (
