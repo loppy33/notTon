@@ -1,0 +1,79 @@
+@import '../../styles/colors.modules'
+
+.Home
+    overflow: scroll
+    height: 86vh
+    .info
+        top: 0
+        position: fixed
+        width: 100%
+        z-index: -1
+        height: 14vh
+        background: linear-gradient(180deg, $mainColor 0%, $secondColor 100%)
+
+        p
+            padding-top: 24px
+            display: flex
+            text-align: center
+            justify-content: center
+            align-items: center
+            gap: 10px
+            font-size: 14px
+
+            color: $bgColor
+            width: 100%
+
+
+            .icon
+                width: 16px
+                height: 16px
+
+            svg
+                font-size: 14px
+                transition: .3s
+                animation: heart 3s ease-in-out infinite
+
+                @keyframes heart
+                    0%
+                        transform: rotate(-30deg) scale(1.1)
+                        color: red
+
+                    50%
+                        transform: rotate(0deg)
+                        color: #fff
+
+                    100%
+                        transform: rotate(-30deg) scale(1.1)
+                        color: red
+
+            span
+                display: flex
+                align-items: center
+                gap: 8px
+                font-size: 14px
+
+            button
+                span
+                    font-weight: 600
+                    background: -webkit-linear-gradient($mainColor, $secondColor)
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+
+    .main__content
+        margin-top: 10vh
+        
+        background-color: $bgColor
+        border-radius: 24px 24px 0 0
+        padding-bottom: 20px
+        .user__balance
+            margin-top: 10vh
+            text-align: center
+            .logo
+                width: 200px
+                margin-top: 10px
+
+            h2
+                font-weight: 600
+
+    .tasks__container
+        text-align: center
